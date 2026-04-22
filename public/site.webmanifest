@@ -1,0 +1,16 @@
+{
+  "name": "RedDrop RCY",
+  "short_name": "RedDrop",
+  "description": "Emergency blood coordination for RCY and RPI.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#7f1d1d",
+  "theme_color": "#b91c1c",
+  "icons": [
+    {
+      "src": "/redcrescent-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
