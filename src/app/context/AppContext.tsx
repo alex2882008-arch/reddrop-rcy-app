@@ -179,6 +179,7 @@ export const useApp = (): AppContextValue => {
 // ─── Provider ─────────────────────────────────────────────────────────────────
 
 const SERVER_URL = `https://${projectId}.supabase.co/functions/v1/server`;
+const AI_URL = import.meta.env.VITE_AI_URL || `${SERVER_URL}/ai`;
 
 const supabase = createClient(`https://${projectId}.supabase.co`, publicAnonKey);
 
@@ -386,7 +387,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const trackAction = useCallback(async (action: string, details: any) => {
     try {
-      await fetch(`${SERVER_URL}/ai/trace`, {
+      await fetch(`${AI_URL}/trace`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action, details, userId: currentUser?.id })
@@ -394,11 +395,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     } catch (err) {
       console.error('Trace error:', err);
     }
-  }, [currentUser]);
+  }, [currentUser, AI_URL]);
 
   const askAi = useCallback(async (prompt: string, context?: any) => {
     try {
-      const res = await fetch(`${SERVER_URL}/ai/analyze`, {
+      const res = await fetch(`${AI_URL}/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt, context: context || { profiles, requests, camps } })
@@ -409,7 +410,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       console.error('AI error:', err);
       return 'AI system is currently busy.';
     }
-  }, [profiles, requests, camps]);
+  }, [profiles, requests, camps, AI_URL]);
 
   // ─── Auth ─────────────────────────────────────────────────────────────────
   const login = async (email: string, password: string) => {
