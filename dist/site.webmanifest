@@ -1,0 +1,29 @@
+{
+  "name": "RedDrop RCY",
+  "short_name": "RedDrop",
+  "description": "Emergency blood donor coordination platform for RCY and RPI. Find blood donors quickly, manage donation camps.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#7f1d1d",
+  "theme_color": "#b91c1c",
+  "icons": [
+    {
+      "src": "/redcrescent-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["medical", "social", "utilities"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "creator": "GrayRAT",
+  "developer": {
+    "name": "GrayRAT",
+    "url": "https://grayrat.com"
+  }
+}
